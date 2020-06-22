@@ -1,0 +1,41 @@
+﻿@page "{code:int?}"
+@model Sample.Energy.WebEnergy.Pages.Contract.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit @Model.Contract.ClientName</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Contract.Code" />
+    <div class="form-group">
+        <label asp-for="Contract.ClientName"></label>
+        <input class="form-control" asp-for="Contract.ClientName" />
+        <span class="text-danger" asp-validation-for="Contract.ClientName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Contract.Type"></label>
+        <select class="form-control" asp-for="Contract.Type" asp-items="Model.ContractTypes"></select>
+        <span class="text-danger" asp-validation-for="Contract.Type"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Contract.Quantity"></label>
+        <input class="form-control" asp-for="Contract.Quantity" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Contract.Value"></label>
+        <input class="form-control" asp-for="Contract.Value" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Contract.StartDate"></label>
+        <input type="date" class="form-control" asp-for="Contract.StartDate" />
+        <span class="text-danger" asp-validation-for="Contract.StartDate"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Contract.EndDate"></label>
+        <input class="form-control" asp-for="Contract.EndDate" />
+    </div>
+    <br />
+    <br />
+    <button class="btn btn-outline-secondary">SAVE</button>
+</form>

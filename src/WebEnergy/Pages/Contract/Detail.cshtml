@@ -1,0 +1,42 @@
+﻿@page "{code:int}"
+@model Sample.Energy.WebEnergy.Pages.Contract.DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>@Model.Contract.ClientName</h1>
+<br />
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-info">@Model.Message</div>
+    <br />
+}
+
+<div>
+    Code: @Model.Contract.Code
+</div>
+<div>
+    Client Name: @Model.Contract.ClientName
+</div>
+<div>
+    Type: @Model.Contract.Type
+</div>
+<div>
+    Quantity: @Model.Contract.Quantity
+</div>
+<div>
+    Value: @Model.Contract.Value
+</div>
+<div>
+    Start Date: @Model.Contract.StartDate.ToShortDateString()
+</div>
+<div>
+    End Date: @(Model.Contract.EndDate is null ? "" : Model.Contract.EndDate.Value.ToShortDateString())
+</div>
+<div>
+    Months: @Model.Contract.MonthsDuration
+</div>
+<br />
+<br />
+<a asp-page="./List" class="btn btn-outline-secondary">All Contracts</a>

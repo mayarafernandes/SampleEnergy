@@ -1,0 +1,43 @@
+﻿@page "{handler?}"
+@model Sample.Energy.WebEnergy.Pages.Contract.ListModel
+@{
+    ViewData["Title"] = "Contracts";
+}
+
+<h1>Contracts</h1>
+
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" asp-for="SearchClientName" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary">GO</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    @foreach (var contract in Model.Contracts)
+    {
+        <tr>
+            <td>@contract.ClientName</td>
+            <td class="text-center">@contract.StartDate.ToShortDateString()</td>
+            <td class="text-right">
+                <a asp-page="./Detail" asp-route-code="@contract.Code" class="btn btn-outline-secondary">VIEW</a>
+            </td>
+            <td class="text-right">
+                <a asp-page="./Edit" asp-route-code="@contract.Code" class="btn btn-outline-secondary">EDIT</a>
+            </td>
+            <td class="text-right">
+                <form asp-page-handler="Delete" asp-route-code="@contract.Code" method="post">
+                    <button onclick="return confirm('Are you sure you want to delete?')" class="btn btn-outline-secondary">DELETE</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+<br />
+<a asp-page="./Edit" class="btn btn-outline-secondary">CREATE</a>
